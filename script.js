@@ -1,3 +1,4 @@
+
 fetch('https://api.github.com/users/KsuBurn')
 	.then(res => res.json())
 	.then(json => {
@@ -12,16 +13,20 @@ fetch('https://api.github.com/users/KsuBurn')
 		const link = json.url;
 
 		const body = document.body;
-		const newPhoto = body.createElement('img');
-		const newName = body.createElement('a');
-		const profileDescription = body.createElement('p');
+		
+		const newPhoto = new Image();
 		newPhoto.src = avatar;
-		body.appendChild(newRhoto);
+		body.appendChild(newPhoto);
+
+		const newName = document.createElement('a');
 		newName.innerHTML = name;
 		newName.setAttribute('href', link);
 		body.appendChild(newName);
+
+		const profileDescription = document.createElement('p');
 		profileDescription.innerHTML = bio;
 		body.appendChild(profileDescription);
 	})
+
 
 	.catch(err => console.log("Информация о пользователе не доступна"))
